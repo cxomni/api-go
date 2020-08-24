@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/usabilla/api-go/internal"
+	"github.com/cxomni/api-go/internal"
 )
 
 var (

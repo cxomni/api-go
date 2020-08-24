@@ -32,7 +32,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/usabilla/api-go/internal"
+	"github.com/cxomni/api-go/internal"
 )
 
 func mockRequest(method, uri string, params map[string]string, client *http.Client) *request {

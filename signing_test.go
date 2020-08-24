@@ -26,7 +26,7 @@ package usabilla
 import (
 	"testing"
 
-	"github.com/usabilla/api-go/internal"
+	"github.com/cxomni/api-go/internal"
 )
 
 func Test_Hash(t *testing.T) {

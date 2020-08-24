@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/usabilla/api-go"
+	usabilla "github.com/cxomni/api-go"
 )
 
 func buttons(usabilla *usabilla.Usabilla) {
