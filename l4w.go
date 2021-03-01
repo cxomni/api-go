@@ -71,7 +71,7 @@ type FeedbackItem struct {
 	URL       string            `json:"url"`
 }
 
-// Campaign represents a campaign item.
+// CampaignStruct represents a campaign item.
 type CampaignStruct struct {
 	ID          string    `json:"id"`
 	Date        time.Time `json:"date"`
@@ -82,7 +82,7 @@ type CampaignStruct struct {
 	Type        string    `json:"type"`
 }
 
-// CampaignResult represents a campaign result item.
+// CampaignResultStruct represents a campaign result item.
 type CampaignResultStruct struct {
 	ID         string                 `json:"id"`
 	UserAgent  string                 `json:"userAgent"`
@@ -95,7 +95,7 @@ type CampaignResultStruct struct {
 	Time       float64                `json:"time"`
 }
 
-// CampaignStat represents a campaign statistics item.
+// CampaignStatStruct represents a campaign statistics item.
 type CampaignStatStruct struct {
 	ID         string `json:"id"`
 	Completed  int    `json:"completed"`
@@ -322,7 +322,7 @@ func (b *Buttons) Get(params map[string]string) (*ButtonResponse, error) {
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewButtonResponse(data)
@@ -357,7 +357,7 @@ func (f *FeedbackItems) Get(buttonID string, params map[string]string) (*Feedbac
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewFeedbackResponse(data)
@@ -428,7 +428,7 @@ func (c *Campaigns) Get(params map[string]string) (*CampaignResponse, error) {
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewCampaignResponse(data)
@@ -463,7 +463,7 @@ func (r *CampaignResults) Get(campaignID string, params map[string]string) (*Cam
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewCampaignResultResponse(data)
@@ -546,7 +546,7 @@ func (cs *CampaignStats) Get(campaignID string, params map[string]string) (*Camp
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewCampaignStatsResponse(data)
@@ -618,7 +618,7 @@ func (c *InpageWidgets) Get(params map[string]string) (*InpageWidgetResponse, er
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewInpageWidgetResponse(data)
@@ -653,7 +653,7 @@ func (r *InpageWidgetFeedbackItems) Get(inpageID string, params map[string]strin
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewInpageWidgetFeedbackResponse(data)

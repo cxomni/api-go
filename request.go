@@ -80,6 +80,9 @@ func (r *request) get() ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("Usabilla API: HTTP error %d; message: %s", resp.StatusCode, body)
+	}
 
 	return body, nil
 }

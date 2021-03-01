@@ -141,7 +141,7 @@ type AppCampaignResponse struct {
 	Items []AppCampaignStruct `json:"items"`
 }
 
-// AppCampaignResults is a response that contains App campaign results data.
+// AppCampaignResultsResponse is a response that contains App campaign results data.
 type AppCampaignResultsResponse struct {
 	response
 	Items []AppCampaignResultStruct `json:"items"`
@@ -164,7 +164,7 @@ func (a *Apps) Get(params map[string]string) (*AppResponse, error) {
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return newAppResponse(data)
@@ -199,7 +199,7 @@ func (af *AppFeedbackItems) Get(appID string, params map[string]string) (*AppFee
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return newAppFeedbackResponse(data)
@@ -233,7 +233,7 @@ func (ac *AppCampaigns) Get(params map[string]string) (*AppCampaignResponse, err
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return newAppCampaignResponse(data)
@@ -263,7 +263,7 @@ func (acr *AppCampaignResults) Get(campaignID string, params map[string]string) 
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return newAppCampaignResultsResponse(data)
@@ -271,8 +271,8 @@ func (acr *AppCampaignResults) Get(campaignID string, params map[string]string) 
 
 // Iterate uses a channel which transparently uses the HasMore field to fire a new API request. Once all results
 // have consumed on the channel it closes the chanel.
-func (ac *AppCampaignResults) Iterate(campaignID string, params map[string]string) chan AppCampaignResultStruct {
-	resp, err := ac.Get(campaignID, params)
+func (acr *AppCampaignResults) Iterate(campaignID string, params map[string]string) chan AppCampaignResultStruct {
+	resp, err := acr.Get(campaignID, params)
 
 	if err != nil {
 		panic(err)
@@ -280,7 +280,7 @@ func (ac *AppCampaignResults) Iterate(campaignID string, params map[string]strin
 
 	acrc := make(chan AppCampaignResultStruct)
 
-	go appCampaignResults(acrc, resp, ac, campaignID)
+	go appCampaignResults(acrc, resp, acr, campaignID)
 
 	return acrc
 }

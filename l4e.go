@@ -86,7 +86,7 @@ func (eb *EmailButtons) Get(params map[string]string) (*EmailButtonResponse, err
 
 	data, err := request.get()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return NewEmailButtonResponse(data)
