@@ -28,6 +28,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 // Canonical URI constants.
@@ -90,7 +91,7 @@ type AppCampaignStruct struct {
 // AppCampaignResultStruct represents a campaign result item.
 type AppCampaignResultStruct struct {
 	ID         string                 `json:"id"`
-	Date       string                 `json:"date"`
+	Date       time.Time              `json:"date"`
 	CampaignID string                 `json:"campaignId"`
 	AppID      string                 `json:"appId"`
 	Data       map[string]interface{} `json:"data"`
