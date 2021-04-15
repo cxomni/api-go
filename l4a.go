@@ -44,16 +44,16 @@ var (
 
 // App represents an app item.
 type App struct {
-	ID     string `json:"id"`
-	Date   string `json:"date"`
-	Name   string `json:"name"`
-	Status string `json:"status"`
+	ID     string    `json:"id"`
+	Date   time.Time `json:"date"`
+	Name   string    `json:"name"`
+	Status string    `json:"status"`
 }
 
 // AppFeedbackItem represents an app feedback item.
 type AppFeedbackItem struct {
 	ID           string                 `json:"id"`
-	Date         string                 `json:"date"`
+	Date         time.Time              `json:"date"`
 	Timestamp    string                 `json:"timestamp"`
 	DeviceName   string                 `json:"deviceName"`
 	Data         map[string]interface{} `json:"data"`
@@ -80,12 +80,12 @@ type AppFeedbackItem struct {
 
 // AppCampaignStruct represents a campaign item.
 type AppCampaignStruct struct {
-	ID             string   `json:"id"`
-	CreatedAt      string   `json:"createdAt"`
-	LastModifiedAt string   `json:"lastModifiedAt"`
-	Status         string   `json:"status"`
-	Name           string   `json:"name"`
-	AppIds         []string `json:"appIds"`
+	ID             string    `json:"id"`
+	CreatedAt      time.Time `json:"createdAt"`
+	LastModifiedAt time.Time `json:"lastModifiedAt"`
+	Status         string    `json:"status"`
+	Name           string    `json:"name"`
+	AppIds         []string  `json:"appIds"`
 }
 
 // AppCampaignResultStruct represents a campaign result item.
